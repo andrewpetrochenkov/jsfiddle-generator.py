@@ -4,7 +4,7 @@ import os
 
 
 class JSFiddle:
-    """JSFiddle class. attrs: `path`, `css`, `js`, `html`, `name`, `description`, `resources`. methods: `create()`"""
+    """attrs: `path`, `css`, `js`, `html`, `name`, `description`, `resources`. methods: `create()`"""
     resources = []
     name = None
     description = None
@@ -35,7 +35,7 @@ class JSFiddle:
             os.makedirs(os.getcwd())
         details = dict(
             name=self.name if self.name else os.path.basename(os.getcwd()),
-            description=self.description if self.description else "todo",
+            description=self.description if self.description else "_",
             resources=self.resources if self.resources else [""]
         )
         if os.path.exists(path):
@@ -58,7 +58,6 @@ class JSFiddle:
             open(path, "w").write(self.js if self.js else "")
 
 
-# jsfiddle_generator.create()
-# python -m jsfiddle_generator .
-# find . -name "demo.html" | sed 's/\/[^\/]*$//' | xargs python -m jsfiddle_generator
-# find . -name "demo.*" | sed 's/\/[^\/]*$//' | xargs python -m my_jsfiddle.bootstrap
+"""
+find . -name "demo.html" | xargs python -m jsfiddle_generator
+"""
