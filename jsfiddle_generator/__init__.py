@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-import jsfiddle_generator.yaml
 import os
 import public
+import yaml
 
 
 @public.add
@@ -60,8 +60,8 @@ class JSFiddleRepo(JSFiddle):
             resources=self.resources if self.resources else [""]
         )
         if os.path.exists(path):
-            data.update(jsfiddle_generator.yaml.load(path))
-        jsfiddle_generator.yaml.save(path, data)
+            data.update(yaml.load(open(path, 'r')))
+        yaml.dump(data, open(path, 'w'), default_flow_style=False)
 
 
 @public.add
@@ -87,5 +87,5 @@ class JSFiddleGist(JSFiddle):
             panel_css=1
         )
         if os.path.exists(path):
-            data.update(jsfiddle_generator.yml.load(path))
-        jsfiddle_generator.yml.save(path, data)
+            data.update(yaml.load(open(path, 'r')))
+        yaml.dump(data, open(path, 'w'), default_flow_style=False)
