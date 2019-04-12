@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-"""generate jsfiddle files: `demo.css`, `demo.js`, `demo.html`, `demo.details`"""
+"""generate jsfiddle gist files: `fiddle.css`, `fiddle.js`, `fiddle.html`, `fiddle.manifest`"""
 # -*- coding: utf-8 -*-
 import click
 import os
 import jsfiddle_generator
 
-MODULE_NAME = "jsfiddle_generator"
+MODULE_NAME = "jsfiddle_generator.gist"
 PROG_NAME = 'python -m %s' % MODULE_NAME
 USAGE = 'python -m %s path ...' % MODULE_NAME
 
@@ -21,7 +21,7 @@ def _cli(paths):
         if not os.path.exists(path):
             os.makedirs(path)
         os.chdir(path)
-        jsfiddle_generator.JSFiddle().create()
+        jsfiddle_generator.JSFiddleGist().create()
 
 
 if __name__ == '__main__':

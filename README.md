@@ -13,40 +13,72 @@ $ [sudo] pip install jsfiddle-generator
 ```
 
 #### How it works
+[jsfiddle github repo files](https://docs.jsfiddle.net/github-integration/untitled-1):
 ```
 .
-├── demo.css
-├── demo.details
-├── demo.js
 ├── demo.html
+├── demo.css
+├── demo.js
+├── demo.details
 ```
+
+[jsfiddle github gist files](https://docs.jsfiddle.net/github-integration/untitled):
+```
+.
+├── fiddle.html
+├── fiddle.css
+├── fiddle.js
+├── fiddle.manifest
+```
+
+#### Classes
+class|`__doc__`
+-|-
+`jsfiddle_generator.JSFiddle` |attrs: `path`, `css`, `js`, `html`, `name`, `description`, `resources`. methods: `create()`
+`jsfiddle_generator.JSFiddleGist` |github gist files generator
+`jsfiddle_generator.JSFiddleRepo` |github repo files generator
+
+#### Functions
+function|`__doc__`
+-|-
+`jsfiddle_generator.yaml.load(path)` |return a dictorinary with yaml data
+`jsfiddle_generator.yaml.save(path, data)` |save a dictionary to a yaml file
+
+#### Executable modules
+usage|`__doc__`
+-|-
+`python -m jsfiddle_generator.gist path ...` |generate jsfiddle gist files: `fiddle.css`, `fiddle.js`, `fiddle.html`, `fiddle.manifest`
+`python -m jsfiddle_generator.repo path ...` |generate jsfiddle repo files: `demo.css`, `demo.js`, `demo.html`, `demo.details`
 
 #### Examples
 create `demo.css`, `demo.js`, `demo.details` in every dir with `demo.html`:
 ```bash
-$ find . -name "demo.html" -exec python -m jsfiddle_generator {} \;
+$ find . -name "demo.html" -exec python -m jsfiddle_generator.repo {} \;
 ```
----
-create `demo.css`, `demo.js`, `demo.details`, `demo.html` in every empty dir:
 
-`find . -not -path '*/\.*' -type d -links 2 -exec python -m jsfiddle_generator {} \;`
+---
+create jsfiddle repo files in every empty dir:
+
+`find . -not -path '*/\.*' -type d -links 2 -exec python -m jsfiddle_generator.repo {} \;`
 
 ---
 paths with spaces:
 
 OS|speed|command
 -|-|-
-any|slow|`find ... -exec python -m jsfiddle_generator {} \;`
-Linux|fast|`find ... -print0 \| xargs -d '\n' python -m jsfiddle_generator`
-macOS|fast|`find ... -print0 \| xargs -0 python -m jsfiddle_generator`
+any|slow|`find ... -exec python -m jsfiddle_generator.repo {} \;`
+Linux|fast|`find ... -print0 \| xargs -d '\n' python -m jsfiddle_generator.repo`
+macOS|fast|`find ... -print0 \| xargs -0 python -m jsfiddle_generator.repo`
 
 #### Related projects
-+   [`jsfiddle.py` - jsfiddle helper](https://pypi.org/project/jsfiddle/)
-+   [`jsfiddle-build.py` - build html file from jsfiddle files](https://pypi.org/project/jsfiddle-build/)
++   [`jsfiddle-build.py` - build `build.html` file from jsfiddle files](https://pypi.org/project/jsfiddle-build/)
++   [`jsfiddle-factory.py` - jsfiddles mass production](https://pypi.org/project/jsfiddle-build/)
 +   [`jsfiddle-generator.py` - jsfiddle files generator](https://pypi.org/project/jsfiddle-generator/)
-+   [`jsfiddle-readme.py` - generate jsfiddle `README.md`](https://pypi.org/project/jsfiddle-readme/)
++   [`jsfiddle-github.py` - jsfiddle github integration helper](https://pypi.org/project/jsfiddle-github/)
++   [`jsfiddle-readme-generator.py` - generate jsfiddle `README.md`](https://pypi.org/project/jsfiddle-readme-generator/)
 
 #### Links
++   [Display fiddle from Gist](https://docs.jsfiddle.net/github-integration/untitled)
 +   [Display fiddle from a Github repository](https://docs.jsfiddle.net/github-integration/untitled-1)
 
 <p align="center">
