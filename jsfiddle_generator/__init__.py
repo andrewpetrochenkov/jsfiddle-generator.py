@@ -60,7 +60,7 @@ class JSFiddleRepo(JSFiddle):
             resources=self.resources if self.resources else [""]
         )
         if os.path.exists(path):
-            data.update(yaml.load(open(path, 'r')))
+            data.update(yaml.safe_load(open(path, 'r')))
         yaml.dump(data, open(path, 'w'), default_flow_style=False)
 
 
@@ -87,5 +87,5 @@ class JSFiddleGist(JSFiddle):
             panel_css=1
         )
         if os.path.exists(path):
-            data.update(yaml.load(open(path, 'r')))
+            data.update(yaml.safe_load(open(path, 'r')))
         yaml.dump(data, open(path, 'w'), default_flow_style=False)

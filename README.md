@@ -38,12 +38,6 @@ class|`__doc__`
 `jsfiddle_generator.JSFiddleGist` |github gist files generator
 `jsfiddle_generator.JSFiddleRepo` |github repo files generator
 
-#### Functions
-function|`__doc__`
--|-
-`jsfiddle_generator.yaml.load(path)` |return a dictorinary with yaml data
-`jsfiddle_generator.yaml.save(path, data)` |save a dictionary to a yaml file
-
 #### Executable modules
 usage|`__doc__`
 -|-
@@ -71,7 +65,7 @@ Linux|fast|`find ... -print0 \| xargs -d '\n' python -m jsfiddle_generator.repo`
 macOS|fast|`find ... -print0 \| xargs -0 python -m jsfiddle_generator.repo`
 
 #### Related projects
-+   [`jsfiddle-build.py` - build `build.html` file from jsfiddle files](https://pypi.org/project/jsfiddle-build/)
++   [`jsfiddle-build.py` - build `build.html` from jsfiddle files](https://pypi.org/project/jsfiddle-build/)
 +   [`jsfiddle-factory.py` - jsfiddles mass production](https://pypi.org/project/jsfiddle-build/)
 +   [`jsfiddle-generator.py` - jsfiddle files generator](https://pypi.org/project/jsfiddle-generator/)
 +   [`jsfiddle-github.py` - jsfiddle github integration helper](https://pypi.org/project/jsfiddle-github/)
