@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+__all__ = ['JSFiddle', 'JSFiddleRepo', 'JSFiddleGist']
+
+
 import os
-import public
 import yaml
 
 
-@public.add
 class JSFiddle:
     """attrs: `path`, `css`, `js`, `html`, `name`, `description`, `resources`. methods: `create()`"""
     prefix = None
@@ -41,7 +41,6 @@ class JSFiddle:
             open(path, "w").write(self.js if self.js else "")
 
 
-@public.add
 class JSFiddleRepo(JSFiddle):
     """github repo files generator"""
     prefix = "demo"
@@ -64,7 +63,6 @@ class JSFiddleRepo(JSFiddle):
         yaml.dump(data, open(path, 'w'), default_flow_style=False)
 
 
-@public.add
 class JSFiddleGist(JSFiddle):
     """github gist files generator"""
     prefix = "fiddle"
